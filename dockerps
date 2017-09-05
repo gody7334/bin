@@ -1,0 +1,97 @@
+#!/bin/bash
+
+while [[ ! -z $* ]]; do
+    case "$1" in
+        -a | --all ) all=true; shift;;
+        -n | --names ) names=true; shift;;
+        -i | --image ) image=true; shift;;
+        -s | --status ) status=true; shift;;
+        -c | --command ) command=true; shift;;
+        -p | --port ) port=true; shift;;
+        -r | --running ) running=true; shift;;
+        -l | --labels ) labels=true; shift;;
+        -m | --mounts ) mounts=true; shift;;
+        -net | --networks ) networks=true; shift;;
+        -create ) create=true; shift;;
+        -id ) id=true; shift;;
+        -size ) size=true; shift;;
+        -h | --help ) help=true; shift;;
+        * ) shift;;
+    esac
+done
+
+
+if [[ ${help} = true ]]; then
+    echo "" 
+    echo "-a, --all"
+    echo "-n, --names"
+    echo "-i, --image"
+    echo "-s, --status"
+    echo "-c, --command"
+    echo "-p, --port"
+    echo "-r, --running for"
+    echo "-l, --labels"
+    echo "-m, --mounts"
+    echo "-net, --networks"
+    echo "-create"
+    echo "-id"
+    echo "-size"
+    echo "--help"
+    echo ""
+    exit
+fi
+
+argStr="table {{.Names}}"
+
+if [[ $image = true ]]; then
+    argStr+="\t{{.Image}}"
+fi
+
+if [[ $id = true ]]; then
+    argStr+="\t{{.ID}}"
+fi
+
+if [[ $size = true ]]; then
+    argStr+="\t{{.Size}}"
+fi
+
+if [[ $status = true ]]; then
+    argStr+="\t{{.Status}}"
+fi
+
+if [[ $create = true ]]; then
+    argStr+="\t{{.CreatedAt}}"
+fi
+
+if [[ $running = true ]]; then
+    argStr+="\t{{.RunningFor}}"
+fi
+
+if [[ $command = true ]]; then
+    argStr+="\t{{.Command}}"
+fi
+
+if [[ $port = true ]]; then
+    argStr+="\t{{.Ports}}"
+fi
+
+if [[ $networks = true ]]; then
+    argStr+="\t{{.Networks}}"
+fi
+
+if [[ $mounts = true ]]; then
+    argStr+="\t{{.Mounts}}"
+fi
+
+if [[ $labels = true ]]; then
+    argStr+="\t{{.Labels}}"
+fi
+
+if [[ $all = true ]]; then
+    docker ps -a --format "$argStr"
+else
+    docker ps --format "$argStr"
+fi
+
+
+#dockerinspect() { docker inspect --format '{{$e := . }}{{with .NetworkSettings}} {{$e.Name}}  {{range $index, $net := .Networks}}{{$index}} {{.IPAddress}} {{end}}{{end}}' $(docker ps -q);}
