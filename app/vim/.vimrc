@@ -1,3 +1,33 @@
+" leader setup
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ","
+let g:mapleader = ","
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle setup
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible              " be iMproved, required 
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" plugin on GitHub repo
+Plugin 'https://github.com/davidhalter/jedi-vim.git'
+Plugin 'https://github.com/tmhedberg/SimpylFold.git'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" pathogen setup
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call pathogen#infect()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer: 
@@ -39,63 +69,6 @@
 "    -> Helper functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Mine
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = ","
-let g:mapleader = ","
-
-" auto reload file
-set autoread
-
-"enable mouse event
-set mouse=a
-
-"no wrap line
-set nowrap
-
-"Open a new tab and jump to definition
-map <leader>] :tab split<cr><C-]>
-
-"Close a tab
-map ## :tabc<cr>
-
-"Jump to definition
-map ] <C-]>
-map [ <C-t>
-
-"Page Up, Down
-nnoremap <pagedown> <C-e><C-e><C-e><C-e>  
-nnoremap <pageup> <C-y><C-y><C-y><C-y>
-
-"comment python code
-vnoremap <leader>/ :s/^/#/<cr>:noh<cr>
-vnoremap <leader>. :s/^#//<cr>:noh<cr>
-
-"Open new tab and go to file
-map <leader>f :tab split<cr>gf
-
-"multiple indent
-vnoremap > ><CR>gv  
-vnoremap < <<CR>gv 
-
-"next previous tab
-map = gt
-map - gT
-
-" Add folding
-set fdn=1
-set fdm=indent
-set fdi="""
-inoremap <F2> <C-O>za 
-nnoremap <F2> za 
-onoremap <F2> <C-C>za 
-vnoremap <F2> zf
-inoremap <F12> <C-O>za 
-nnoremap <F12> za 
-onoremap <F12> <C-C>za 
-vnoremap <F12> zf
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -432,5 +405,132 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-hi TabLineSel ctermfg=Blue ctermbg=White
-hi TabLineFill ctermfg=Black ctermbg=Black
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" => Nerdtree 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+autocmd vimenter * NERDTree 
+autocmd StdinReadPre * let s:std_in=1 
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif 
+autocmd StdinReadPre * let s:std_in=1 
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif  
+
+noremap <F3> :NERDTreeToggle<CR> 
+let NERDTreeBookmarksFile=expand("$HOME/.vim-NERDTreeBookmarks") 
+let NERDTreeShowBookmarks=1 
+"let NERDTreeMinimalUI = 1 
+"let NERDTreeDirArrows = 1 
+"let g:NERDTreeDirArrowExpandable = '+' 
+"let g:NERDTreeDirArrowCollapsible = '-' 
+map <leader>t t<F3><C-w><C-w>-<C-w><C-w>=  
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" => Mine 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" auto reload file
+set autoread
+
+"no wrap line
+set nowrap
+
+"Close a tab
+map <leader>q :tabc<cr>
+
+"Jump to definition
+map ] <C-]>
+map [ <C-t>
+
+"Page Up, Down
+nnoremap <pagedown> <C-e><C-e><C-e><C-e>  
+nnoremap <pageup> <C-y><C-y><C-y><C-y>
+
+"comment python code
+"vnoremap <leader>/ :s/^/#/<cr>:noh<cr>
+"vnoremap <leader>. :s/^#//<cr>:noh<cr>
+
+"NerdCommenter
+vmap <leader>/ <leader>c<space>
+
+"go back to previous file
+map fg <C-^>
+
+"multiple indent
+vnoremap > ><CR>gv  
+vnoremap < <<CR>gv 
+
+"next previous tab
+map = gt
+map - gT
+
+map <C-home> gg
+map <C-end> G
+
+" Add folding
+"set fdn=1
+"set fdm=indent
+"set fdi="""
+
+" python simple fold
+let g:SimpylFold_docstring_preview = 1
+inoremap <F1> <C-O>za 
+nnoremap <F1> za 
+onoremap <F1> <C-C>za 
+vnoremap <F1> zf
+inoremap <F12> <C-O>za 
+nnoremap <F12> za 
+onoremap <F12> <C-C>za 
+vnoremap <F12> zf
+
+"enable mouse event
+set mouse=a
+nnoremap <F10> :set mouse=a<cr>
+nnoremap <F10><F10> :set mouse=<cr>
+inoremap <F10> <ESC>:set mouse=a<cr>i
+inoremap <F10><F10> <ESC>:set mouse=<cr>i
+
+"go arround windows
+noremap <F2> <C-w><C-w>
+
+" tab color
+hi TabLineSel ctermfg=Black ctermbg=White 
+hi TabLineFill ctermfg=Black ctermbg=Black  
+
+"Open new tab and go to file 
+map <leader>f :tab split<cr>gf<F3><C-w><C-w>  
+
+"Open a new tab and jump to definition 
+map <leader>] :tab split<cr><C-]><F3><C-w><C-w>
+
+"let g:jedi#auto_initialization = 1
+
+"move tab 
+noremap <leader>- :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+noremap <leader>= :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
+"map <leader>- :-tabmove<cr>
+"map <leader>= :+tabmove<cr>
+
+" auto detect change
+autocmd CursorHold * checktime
+
+" esc key
+inoremap <F11> <ESC>
+nnoremap <F11> <ESC>
+onoremap <F11> <ESC>
+vnoremap <F11> <ESC>
+snoremap <F11> <ESC>
+xnoremap <F11> <ESC>
+cnoremap <F11> <ESC>
+
+"Bubble single lines
+noremap <leader><Up> ddkP
+noremap <leader><Down> ddp
+" Bubble multiple lines
+noremap <leader><Up> xkP`[V`]
+noremap <leader><C-Down> xp`[V`]
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => String combo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let @l="iChromePhp::log('',$);\n^["
+
+
+

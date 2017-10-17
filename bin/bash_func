@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# print the header (the first line of input) 
+# and then run the specified command on the body (the rest of the input
+# use it in a pipeline, e.g. ps | body grep somepattern 
+# use it in a pipeline, e.g. docker iamges | body sort -k2 
+body() {
+    IFS= read -r head er     
+    printf '%s\n' "$header"     
+    "$@" 
+}
+
+hugefile(){
+    find -type f -exec du -Sh {} + | sort -rh | head -n "$1"
+}
+
+hugefolder(){
+    du -Sh ./ | sort -rh | head -n "$1";
+}
+
+foldersize(){
+    for each in $(ls -a) ; 
+        do du -hs "$each" ; 
+    done
+}
+
+###########
+# remove hugefolder data
+# sudo rm -rf $(hugefolder 100 | grep tb_log | awk '{print $2}')
+###########
+
+# Usage: dockerpush $container $new_image $old_image
+# $container which will be commited, stopped, deleted
+# $new_image which is created
+# $old_iamge which will be deleted
+dockerpush(){
+    echo "docker run like:"
+    runlike $1;
+    
+    if [$3 -n]
+    then
+        echo "stop container: $1";
+        docker stop $1;
+    fi
+
+    echo "commit $1 to $2";
+    docker commit "$1" "$2";
+    
+    echo "push $2 to remote docker server";
+    docker tag "$2" "localhost:5000/$2";
+    docker push "localhost:5000/$2";
+    docker rmi "localhost:5000/$2";
+
+    if [$3 -n]
+    then
+        echo "remove container $1";
+        docker rm $1;
+
+        echo "remove image $3";
+        docker rmi $3;
+    fi
+}
+
+#rmhugefile(){
+#    rm -ri $(hugefile $1 | awk '{print $NF}' | grep $2)
+#}
+
+#rmhugefolder(){
+#    rm -ri $(hugefolder $1 | awk '{print $NF}' | grep $2)
+#}
+
+# runlike https://github.com/lavie/runlike

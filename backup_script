@@ -1,8 +1,0 @@
-#/bin/bash
-
-scp -r gody7334@192.168.0.9:/etc/shellinabox/options-available/ ./shellinabox/
-scp -r gody7334@192.168.0.9:/etc/apache2/sites-available/ ./apache2/
-scp -r gody7334@192.168.0.9:/etc/default/shellinabox ./shellinabox/
-cp ../.bashrc ./
-cp ../.vimrc ./
-

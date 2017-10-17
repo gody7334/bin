@@ -1,0 +1,21 @@
+docker run --name=fb.messenger --env="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" --restart=no -t ubuntu:16.04 /bin/bash
+
+
+docker run --name=docker.ui --env="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" --volume="/data" -p 50010:9000 --restart=no --detach=true portainer/portainer:1.1
+
+
+docker run --name=anaconda.dev --env="PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" --env="LANG=C.UTF-8" --env="LC_ALL=C.UTF-8" --volume="/home/gody7334/docker/dataset/:/dataset/" --volume="/home/gody7334/docker/anaconda/dev/:/home/" -p 50000:8888 --restart=no -t gody7334/anaconda:1.1 /bin/bash
+
+
+docker run --name=tensorflow.dev --env="PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" --env="CUDA_VERSION=8.0.61" --env="CUDA_PKG_VERSION=8-0=8.0.61-1" --env="LD_LIBRARY_PATH=/usr/local/cuda/extras/CUPTI/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64" --env="LIBRARY_PATH=/usr/local/cuda/lib64/stubs:" --env="CUDNN_VERSION=5.1.10" --volume="nvidia_driver_375.39:/usr/local/nvidia:ro" --volume="/home/gody7334/docker/tensorflow/dev/:/home/" --volume="/home/gody7334/docker/dataset/:/dataset/" -p 50001:8888 -p 50002:6006 -p 50020:22 --restart=no --device /dev/nvidiactl:/dev/nvidiactl --device /dev/nvidia0:/dev/nvidia0 --device /dev/nvidia-uvm:/dev/nvidia-uvm -t gody7334/tensorflow:1.2 /bin/bash
+
+
+docker run --name=registry --env="SEARCH_BACKEND=sqlalchemy" --env="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" --volume="/media/gody7334/TOPONE HDD/1-Docker-Registry:/var/lib/registry" --volume="/var/lib/registry" -p 5000:5000 --restart=no --detach=true registry:2 /etc/docker/registry/config.yml
+
+
+docker run --name=dvtb --env="DISPLAY=:0" --env="PATH=/opt/caffe/build/tools::/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" --env="CUDA_VERSION=7.5.18" --env="CUDA_PKG_VERSION=7-5=7.5-18" --env="LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64" --env="LIBRARY_PATH=/usr/local/cuda/lib64/stubs:" --env="CUDNN_VERSION=4.0.8" --env="HOME=/home/developer" --env="CONDA_ROOT=/opt/conda" --env="CAFFE_ROOT=/opt/caffe" --env="DVTB_ROOT=/opt/dvtb" --env="uid=1000" --env="gid=1000" --env="PYCAFFE_ROOT=/opt/caffe/python" --env="PYTHONPATH=:" --volume="/home/docker/dvt:/home/developer/work" --volume="nvidia_driver_375.39:/usr/local/nvidia:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix" --restart=no --device /dev/nvidiactl:/dev/nvidiactl --device /dev/nvidia0:/dev/nvidia0 --device /dev/nvidia-uvm:/dev/nvidia-uvm -t fishcorn/dvtb-container /bin/bash
+
+
+docker run --name=codiad.dev --env="CODIAD_UID=1000" --env="CODIAD_GID=" --env="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" --volume="/home/gody7334/docker/tensorflow/dev/:/home/tensorflow" --volume="/home/gody7334/docker/codiad/code:/code" --volume="/home/gody7334/docker/php/dev/:/home/php" --volume="/var/run/docker.sock:/var/run/docker.sock:ro" --volume="/code" -p 50005:80 --restart=no --detach=true gody7334/codiad:1.1 s6-svscan /etc/s6
+
+

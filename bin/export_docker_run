@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source ~/backup/bin/bash_func
+
+echo "export docker run into file: $1";
+echo "";
+
+for i in $(dockerps -a | body grep .);
+    do echo "$i";
+    runlike "$i" >> "$1";
+    echo $'\n' >> "$1";
+done;
