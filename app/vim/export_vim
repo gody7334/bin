@@ -1,0 +1,4 @@
+#/bin/bash
+
+sudo cp ~/.vimrc ./
+sudo cp -r ~/.vim/* ./vim
