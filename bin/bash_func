@@ -10,6 +10,10 @@ body() {
     "$@" 
 }
 
+lla(){
+    ls -haltr --time=atime;
+}
+
 hugefile(){
     find -type f -exec du -Sh {} + | sort -rh | head -n "$1"
 }
