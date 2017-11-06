@@ -92,7 +92,7 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -al'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -124,5 +124,6 @@ if [ -x /usr/bin/mint-fortune ]; then
      /usr/bin/mint-fortune
 fi
 
-PATH=$PATH:~/bin
-source ~/bin/bash_func
+stty -ixon
+PATH=$PATH:~/backup/bin
+source ~/backup/bin/bash_func
