@@ -1,4 +1,4 @@
 #/bin/bash
 
-sudo cp ~/.vimrc ./
-sudo cp -r ~/.vim/* ./vim
+cp ~/.vimrc ./
+cp -r ~/.vim/* ./.vim

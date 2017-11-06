@@ -20,9 +20,13 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'https://github.com/davidhalter/jedi-vim.git'
 Plugin 'https://github.com/tmhedberg/SimpylFold.git'
+Plugin 'vim-airline/vim-airline' 
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'https://github.com/xolox/vim-misc.git'
+Plugin 'https://github.com/xolox/vim-session.git'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call vundle#end()            " requiredA
 filetype plugin indent on    " required
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -306,10 +310,10 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " => Status line
 """"""""""""""""""""""""""""""
 " Always show the status line
-set laststatus=2
+"set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -409,20 +413,23 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 " => Nerdtree 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
-autocmd vimenter * NERDTree 
-autocmd StdinReadPre * let s:std_in=1 
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif 
-autocmd StdinReadPre * let s:std_in=1 
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif  
+autocmd vimenter * NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
-noremap <F3> :NERDTreeToggle<CR> 
-let NERDTreeBookmarksFile=expand("$HOME/.vim-NERDTreeBookmarks") 
-let NERDTreeShowBookmarks=1 
+inoremap <F1> <ESC>:NERDTreeToggle<CR>i
+nnoremap <F1> :NERDTreeToggle<CR>
+let NERDTreeBookmarksFile=expand("$HOME/.vim-NERDTreeBookmarks")
+let NERDTreeShowBookmarks=1
 "let NERDTreeMinimalUI = 1 
 "let NERDTreeDirArrows = 1 
 "let g:NERDTreeDirArrowExpandable = '+' 
 "let g:NERDTreeDirArrowCollapsible = '-' 
-map <leader>t t<F3><C-w><C-w>-<C-w><C-w>=  
+map <leader>t t<F1><C-w><C-w>gT<C-w><C-w>gt
+map <leader>c :NERDTreeFind<cr>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 " => Mine 
@@ -441,26 +448,30 @@ map ] <C-]>
 map [ <C-t>
 
 "Page Up, Down
-nnoremap <pagedown> <C-e><C-e><C-e><C-e>  
-nnoremap <pageup> <C-y><C-y><C-y><C-y>
+nnoremap <C-Down> <C-e><C-e><C-e><C-e>
+nnoremap <C-Up> <C-y><C-y><C-y><C-y>
+inoremap <C-Down> <ESC><C-e><C-e><C-e><C-e>i
+inoremap <C-Up> <ESC><C-y><C-y><C-y><C-y>i
 
 "comment python code
 "vnoremap <leader>/ :s/^/#/<cr>:noh<cr>
 "vnoremap <leader>. :s/^#//<cr>:noh<cr>
 
 "NerdCommenter
-vmap <leader>/ <leader>c<space>
+vmap <leader>/ <leader>c<space>i
 
 "go back to previous file
 map fg <C-^>
 
 "multiple indent
-vnoremap > ><CR>gv  
-vnoremap < <<CR>gv 
+vnoremap > ><CR>gv
+vnoremap < <<CR>gv
 
 "next previous tab
-map = gt
-map - gT
+inoremap <PageUp> <ESC>gTi
+inoremap <PageDown> <ESC>gti
+nnoremap <PageUp> gT
+nnoremap <PageDown> gt
 
 map <C-home> gg
 map <C-end> G
@@ -472,14 +483,18 @@ map <C-end> G
 
 " python simple fold
 let g:SimpylFold_docstring_preview = 1
-inoremap <F1> <C-O>za 
-nnoremap <F1> za 
-onoremap <F1> <C-C>za 
-vnoremap <F1> zf
-inoremap <F12> <C-O>za 
-nnoremap <F12> za 
-onoremap <F12> <C-C>za 
-vnoremap <F12> zf
+"inoremap <F1> <C-O>za
+"nnoremap <F1> za
+"onoremap <F1> <C-C>za
+"vnoremap <F1> zf
+"inoremap <F12> <C-O>za
+"nnoremap <F12> za
+"onoremap <F12> <C-C>za
+"vnoremap <F12> zf
+inoremap <C-e> <C-O>za
+nnoremap <C-e> za
+onoremap <C-e> <C-C>za
+vnoremap <C-e> zf
 
 "enable mouse event
 set mouse=a
@@ -490,22 +505,29 @@ inoremap <F10><F10> <ESC>:set mouse=<cr>i
 
 "go arround windows
 noremap <F2> <C-w><C-w>
+inoremap <F2> <ESC><C-w><C-w>i
+
+"airline
+let g:airline_theme="dark"
+set t_Co=256
+set encoding=utf-8
 
 " tab color
-hi TabLineSel ctermfg=Black ctermbg=White 
-hi TabLineFill ctermfg=Black ctermbg=Black  
+"hi TabLineSel ctermfg=Black ctermbg=White 
+"hi TabLineFill ctermfg=Black ctermbg=Black  
 
 "Open new tab and go to file 
-map <leader>f :tab split<cr>gf<F3><C-w><C-w>  
+map <leader>f :tab split<cr>gf<F1><C-w><C-w>
 
-"Open a new tab and jump to definition 
-map <leader>] :tab split<cr><C-]><F3><C-w><C-w>
+"Open a new tab and jump to definition
+map <leader>] :tab split<cr><C-]><F1><C-w><C-w>
 
-"let g:jedi#auto_initialization = 1
+let g:jedi#auto_initialization = 0
+let g:jedi#popup_on_dot = 0
 
 "move tab 
-noremap <leader>- :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-noremap <leader>= :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
+noremap <leader><PageUp> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+noremap <leader><PageDown> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 "map <leader>- :-tabmove<cr>
 "map <leader>= :+tabmove<cr>
 
@@ -513,25 +535,125 @@ noremap <leader>= :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 autocmd CursorHold * checktime
 
 " esc key
-inoremap <F11> <ESC>
-nnoremap <F11> <ESC>
-onoremap <F11> <ESC>
-vnoremap <F11> <ESC>
-snoremap <F11> <ESC>
-xnoremap <F11> <ESC>
-cnoremap <F11> <ESC>
+"inoremap <F11> <ESC>
+"nnoremap <F11> <ESC>
+"onoremap <F11> <ESC>
+"vnoremap <F11> <ESC>
+"snoremap <F11> <ESC>
+"xnoremap <F11> <ESC>
+"cnoremap <F11> <ESC>
 
 "Bubble single lines
 noremap <leader><Up> ddkP
 noremap <leader><Down> ddp
 " Bubble multiple lines
 noremap <leader><Up> xkP`[V`]
-noremap <leader><C-Down> xp`[V`]
+noremap <leader><Down> xp`[V`]
+
+" doulbe click to replace a word
+nnoremap <del> "_di
+vnoremap <del> "_di
+vnoremap p "_dP
+
+" redo 
+nnoremap r <C-r>
+
+" 
+"inoremap <F9> <C-n>
+
+" control+arrow
+noremap <C-Right> w
+noremap <C-Left> b
+
+" write file
+nnoremap <F8> :w<CR>
+inoremap <F8> <ESC>:w<CR>i
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <ESC>:w<CR>i<Right>
+
+" undo, redo
+nnoremap <C-u> u
+inoremap <C-u> <ESC>ui
+inoremap <C-r> <ESC><C-r>i
+
+"activate visual mode in normal mode
+nnoremap <S-Up> vk
+nnoremap <S-Down> vj
+inoremap <S-Up> <ESC>lvk
+inoremap <S-Down> <ESC>lvj
+" these are mapped in visual mode
+vnoremap <S-Up> k
+vnoremap <S-Down> j
+
+"activate visual mode in normal mode
+nnoremap <S-Left> vh
+nnoremap <S-Right> vl
+inoremap <S-Left> <ESC>lvh
+inoremap <S-Right> <ESC>lvl
+" these are mapped in visual mode
+vnoremap <S-Left> h
+vnoremap <S-Right> l
+
+"activate visual mode in normal mode  
+nnoremap <S-Home> v<Home>
+nnoremap <S-End> v<End>
+inoremap <S-Home> <ESC>lv<Home>
+inoremap <S-End> <ESC>lv<End>
+" these are mapped in visual mode
+vnoremap <S-Home> <Home>
+vnoremap <S-End> <End>
+
+" Ctrl+c Ctrl+x Ctrl+v
+vnoremap <C-c> yi
+vnoremap <C-x> di
+nnoremap <C-v> pi<Right>
+inoremap <C-v> <ESC>pi<Right>
+vmap <C-v> <Del><Left><C-v>
+
+" find function
+imap <C-f> <ESC><space>
+nmap <C-f> <ESC><space>
+vmap <C-f> <ESC><space>
+
+"imap <C-n> <ESC>*Ni
+"nmap <C-n> <ESC>*Ni
+"vmap <C-n> <ESC>*Ni 
+  
+" go to command mode
+inoremap <F12> <ESC>:
+vnoremap <F12> <ESC>:
+nnoremap <F12> <ESC><ESC>:
+cnoremap <F12> <ESC>:
+
+" complete suggestion
+"imap <C-m> <C-n>
+
+" Cut whole line
+inoremap <C-d> <ESC>ddi
+nnoremap <C-d> dd
+
+" close a tab
+imap <C-q> <ESC><leader>qi
+nmap <C-q> <leader>q
+
+" store vim session in current directory
+"inoremap <F11> <ESC>:mksession! ./.vim_session<cr>i
+"nnoremap <F11> :mksession! ./.vim_session<cr>
+"inoremap <F10> <ESC>:source ./.vim_session<cr>i
+"nnoremap <F10> :source ./.vim_session<cr>
+
+" let enter and backspace into insert mode
+nnoremap <cr> i<cr>
+nnoremap <Backspace> i<Backspace>
+nnoremap <Del> i<Del>
+
+" Vim-Session command
+" SaveSession [name]
+" OpenSession
+" DeleteSession
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => String combo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let @l="iChromePhp::log('',$);\n^["
-
-
 
