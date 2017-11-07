@@ -616,11 +616,10 @@ imap <C-f> <ESC><space>
 nmap <C-f> <ESC><space>
 vmap <C-f> <ESC><space>
 
-" go to command mode
-inoremap <F12> <ESC>:
-vnoremap <F12> <ESC>:
-nnoremap <F12> <ESC><ESC>:
-cnoremap <F12> <ESC>:
+" highlight words
+imap <C-h> <ESC>*#
+nmap <C-h> <ESC>*#
+vmap <C-h> <ESC>*# 
 
 "imap <C-n> <ESC>*Ni
 "nmap <C-n> <ESC>*Ni
