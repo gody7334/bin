@@ -453,6 +453,8 @@ nnoremap <C-Down> <C-e><C-e><C-e><C-e>
 nnoremap <C-Up> <C-y><C-y><C-y><C-y>
 inoremap <C-Down> <ESC><C-e><C-e><C-e><C-e>i
 inoremap <C-Up> <ESC><C-y><C-y><C-y><C-y>i
+vnoremap <C-Up> kkk
+vnoremap <C-Down> jjj
 
 "comment python code
 "vnoremap <leader>/ :s/^/#/<cr>:noh<cr>
