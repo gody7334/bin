@@ -456,20 +456,6 @@ inoremap <C-Up> <ESC><C-y><C-y><C-y><C-y>i
 vnoremap <C-Up> kkk
 vnoremap <C-Down> jjj
 
-" Arrow within keyboard
-nmap <C-i> <Up>
-nmap <C-k> <Down>
-nmap <C-j> <Left>
-nmap <C-l> <Right>
-imap <C-i> <Up>
-imap <C-k> <Down>
-imap <C-j> <Left>
-imap <C-l> <Right>
-vmap <C-i> <Up>
-vmap <C-k> <Down>
-vmap <C-j> <Left>
-vmap <C-l> <Right>
-
 "comment python code
 "vnoremap <leader>/ :s/^/#/<cr>:noh<cr>
 "vnoremap <leader>. :s/^#//<cr>:noh<cr>
