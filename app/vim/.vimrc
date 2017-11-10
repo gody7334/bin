@@ -440,7 +440,8 @@ nnoremap <F3> :BookmarkToggle<CR>
 inoremap <F3> <ESC>:BookmarkToggle<CR>
 nnoremap <F4> :BookmarkNext<CR>
 inoremap <F4> <ESC>:BookmarkNext<CR>
- 
+highlight SignColumn ctermbg=0
+
 "Add/remove bookmark at current line            mm      :BookmarkToggle
 "Add/edit/remove annotation at current line     mi      :BookmarkAnnotate <TEXT>
 "Jump to next bookmark in buffer                mn      :BookmarkNext
