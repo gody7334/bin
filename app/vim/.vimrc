@@ -489,8 +489,10 @@ vmap <leader>/ <leader>c<space>i
 map fg <C-^>
 
 "multiple indent
-vnoremap > ><CR>gv
-vnoremap < <<CR>gv
+"vnoremap > ><CR>gv
+"vnoremap < <<CR>gv
+vnoremap <Tab> ><CR>gv
+vnoremap <S-Tab> <<CR>gv
 
 "next previous tab
 inoremap <PageUp> <ESC>gTi
