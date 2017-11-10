@@ -25,6 +25,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'https://github.com/xolox/vim-misc.git'
 Plugin 'https://github.com/xolox/vim-session.git'
 Plugin 'https://github.com/scrooloose/nerdtree.git'
+Plugin 'https://github.com/MattesGroeger/vim-bookmarks.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " requiredA
