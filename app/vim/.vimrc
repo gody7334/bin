@@ -432,6 +432,27 @@ map <leader>t t<F1><C-w><C-w>gT<C-w><C-w>gt
 map <leader>c :NERDTreeFind<cr>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Bookmark
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <F3> :BookmarkToggle<CR>
+inoremap <F3> <ESC>:BookmarkToggle<CR>
+nnoremap <F4> :BookmarkNext<CR>
+inoremap <F4> <ESC>:BookmarkNext<CR>
+ 
+"Add/remove bookmark at current line            mm      :BookmarkToggle
+"Add/edit/remove annotation at current line     mi      :BookmarkAnnotate <TEXT>
+"Jump to next bookmark in buffer                mn      :BookmarkNext
+"Jump to previous bookmark in buffer            mp      :BookmarkPrev
+"Show all bookmarks (toggle)                    ma      :BookmarkShowAll
+"Clear bookmarks in current buffer only         mc      :BookmarkClear
+"Clear bookmarks in all buffers                 mx      :BookmarkClearAll
+"Move up bookmark at current line               [count]mkk      :BookmarkMoveUp [<COUNT>]
+"Move down bookmark at current line             [count]mjj      :BookmarkMoveDown [<COUNT>]
+"Move bookmark at current line to another line  [count]mg       :BookmarkMoveToLine <LINE>
+"Save all bookmarks to a file                   :BookmarkSave <FILE_PATH>
+"Load bookmarks from a file                     :BookmarkLoad <FILE_PATH>"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 " => Mine 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
@@ -449,10 +470,10 @@ map ] <C-]>
 map [ <C-t>
 
 "Page Up, Down
-nnoremap <C-Down> <C-e><C-e><C-e><C-e>
-nnoremap <C-Up> <C-y><C-y><C-y><C-y>
-inoremap <C-Down> <ESC><C-e><C-e><C-e><C-e>i
-inoremap <C-Up> <ESC><C-y><C-y><C-y><C-y>i
+nnoremap <C-Down> <C-e><C-e><C-e><C-e><C-e><Down><Down><Down><Down><Down>
+nnoremap <C-Up> <C-y><C-y><C-y><C-y><C-y><Up><Up><Up><Up><Up>
+inoremap <C-Down> <ESC><C-e><C-e><C-e><C-e><C-e>i<Down><Down><Down><Down><Down>
+inoremap <C-Up> <ESC><C-y><C-y><C-y><C-y><C-y>i<Up><Up><Up><Up><Up>
 vnoremap <C-Up> kkk
 vnoremap <C-Down> jjj
 
