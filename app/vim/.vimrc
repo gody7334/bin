@@ -440,7 +440,6 @@ nnoremap <F3> :BookmarkToggle<CR>
 inoremap <F3> <ESC>:BookmarkToggle<CR>
 nnoremap <F4> :BookmarkNext<CR>
 inoremap <F4> <ESC>:BookmarkNext<CR>
-highlight SignColumn ctermbg=0
 
 "Add/remove bookmark at current line            mm      :BookmarkToggle
 "Add/edit/remove annotation at current line     mi      :BookmarkAnnotate <TEXT>
@@ -689,4 +688,4 @@ nnoremap <Del> i<Del>
 " => String combo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let @l="iChromePhp::log('',$);\n^["
-
+highlight SignColumn ctermbg=0
