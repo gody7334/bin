@@ -612,11 +612,11 @@ inoremap <S-Down> <ESC>lvj
 vnoremap <S-Up> k
 vnoremap <S-Down> j
 
-"activate visual mode in normal mode
+" activate visual mode in normal mode
 nnoremap <S-Left> vh
 nnoremap <S-Right> vl
-inoremap <S-Left> <ESC>lvh
-inoremap <S-Right> <ESC>lvl
+inoremap <S-Left> l<ESC>vh
+inoremap <S-Right> l<ESC>vl
 " these are mapped in visual mode
 vnoremap <S-Left> h
 vnoremap <S-Right> l
