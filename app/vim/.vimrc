@@ -615,8 +615,8 @@ vnoremap <S-Down> j
 " activate visual mode in normal mode
 nnoremap <S-Left> vh
 nnoremap <S-Right> vl
-inoremap <S-Left> l<ESC>vh
-inoremap <S-Right> l<ESC>vl
+inoremap <S-Left> <ESC>vh
+inoremap <S-Right> <ESC>vl
 " these are mapped in visual mode
 vnoremap <S-Left> h
 vnoremap <S-Right> l
@@ -678,6 +678,8 @@ nmap <C-q> <leader>q
 nnoremap <cr> i<cr>
 nnoremap <Backspace> i<Backspace>
 nnoremap <Del> i<Del>
+nnoremap <Home> i<Home>
+nnoremap <End> i<End>
 
 " Vim-Session command
 " SaveSession [name]
