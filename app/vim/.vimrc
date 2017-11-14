@@ -436,8 +436,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Bookmark
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <F3> :BookmarkToggle<CR>
-inoremap <F3> <ESC>:BookmarkToggle<CR>
+nnoremap <C-F3> :BookmarkToggle<CR>
+inoremap <C-F3> <ESC>:BookmarkToggle<CR>
+nnoremap <F3> :BookmarkPrev<CR>
+inoremap <F3> <ESC>:BookmarkPrev<CR>
 nnoremap <F4> :BookmarkNext<CR>
 inoremap <F4> <ESC>:BookmarkNext<CR>
 
