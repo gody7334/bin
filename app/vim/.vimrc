@@ -607,8 +607,10 @@ map fg <C-^>
 
 "multiple indent
 "switch between S-tab and Tab as C-i mapping is strange
-vnoremap <S-Tab> ><CR>gv
-vnoremap <Tab> <<CR>gv
+inoremap >> <ESC>v><CR>i<Up>
+inoremap << <ESC>v<<CR>i<Up>
+vnoremap >> ><CR>gv                                                                                                                                         
+vnoremap << <<CR>gv
 
 "next previous tab
 inoremap <PageUp> <ESC>gTi
