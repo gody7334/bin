@@ -484,8 +484,8 @@ nnoremap KK v<Down>
 inoremap II <ESC>v<Up>
 inoremap KK <ESC>v<Down>
 " these are mapped in visual mode
-vnoremap II k
-vnoremap KK j
+vnoremap I k
+vnoremap K j
 
 "activate visual mode in normal mode
 nnoremap <S-Left> v<Left>
@@ -502,8 +502,8 @@ nnoremap LL v<Right>
 inoremap JJ <Right><ESC>v<Left>
 inoremap LL <Right><ESC>v<Right>
 " these are mapped in visual mode
-vnoremap JJ h
-vnoremap LL l
+vnoremap J h
+vnoremap L l
 
 "activate visual mode in normal mode
 nnoremap <S-Home> v<Home>
@@ -519,8 +519,8 @@ nnoremap OO v<End>
 inoremap UU <ESC>v<Home>
 inoremap OO <ESC>v<End>
 " these are mapped in visual mode
-vnoremap UU <Home>
-vnoremap OO <End>
+vnoremap U <Home>
+vnoremap O <End>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Laptop mapping
