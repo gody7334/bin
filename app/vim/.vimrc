@@ -432,6 +432,7 @@ let NERDTreeShowBookmarks=1
 map <leader>t t<F1><C-w><C-w>gT<C-w><C-w>gt
 map <leader>c :NERDTreeFind<cr>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeMapOpenSplit ='ni'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Bookmark
@@ -757,6 +758,11 @@ nnoremap <End> i<End>
 " DeleteSession
 
 vnoremap <Backspace> <Del>
+
+map i <Up>
+map k <Down>
+map j <Left>
+map l <Right>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => String combo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
