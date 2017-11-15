@@ -456,6 +456,125 @@ inoremap <F4> <ESC>:BookmarkNext<CR>
 "Save all bookmarks to a file                   :BookmarkSave <FILE_PATH>
 "Load bookmarks from a file                     :BookmarkLoad <FILE_PATH>"
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Alt func
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let c='a'
+    while c <= 'z'
+        exec "set <A-".c.">=\e".c
+        exec "imap \e".c." <A-".c.">"
+        let c = nr2char(1+char2nr(c))
+    endw
+set timeout ttimeoutlen=50
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Shift select
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"activate visual mode in normal mode
+nnoremap <S-Up> v<Up>
+nnoremap <S-Down> v<Down>
+inoremap <S-Up> <ESC>v<Up>
+inoremap <S-Down> <ESC>v<Down>
+" these are mapped in visual mode
+vnoremap <S-Up> k
+vnoremap <S-Down> j
+
+nnoremap II v<Up>
+nnoremap KK v<Down>
+inoremap II <ESC>v<Up>
+inoremap KK <ESC>v<Down>
+" these are mapped in visual mode
+vnoremap II k
+vnoremap KK j
+
+"activate visual mode in normal mode
+nnoremap <S-Left> v<Left>
+nnoremap <S-Right> v<Right>
+inoremap <S-Left> <Right><ESC>v<Left>
+inoremap <S-Right> <Right><ESC>v<Right>
+" these are mapped in visual mode
+vnoremap <S-Left> h
+vnoremap <S-Right> l
+
+"activate visual mode in normal mode
+nnoremap JJ v<Left>
+nnoremap LL v<Right>
+inoremap JJ <Right><ESC>v<Left>
+inoremap LL <Right><ESC>v<Right>
+" these are mapped in visual mode
+vnoremap JJ h
+vnoremap LL l
+
+"activate visual mode in normal mode
+nnoremap <S-Home> v<Home>
+nnoremap <S-End> v<End>
+inoremap <S-Home> <ESC>v<Home>
+inoremap <S-End> <ESC>v<End>
+" these are mapped in visual mode
+vnoremap <S-Home> <Home>
+vnoremap <S-End> <End>
+
+nnoremap UU v<Home>
+nnoremap OO v<End>
+inoremap UU <ESC>v<Home>
+inoremap OO <ESC>v<End>
+" these are mapped in visual mode
+vnoremap UU <Home>
+vnoremap OO <End>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Laptop mapping
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Left, Right, Up, Down, Home, End"
+nnoremap <M-k> <C-e><C-e><C-e><C-e><C-e><Down><Down><Down><Down><Down>
+nnoremap <M-i> <C-y><C-y><C-y><C-y><C-y><Up><Up><Up><Up><Up>
+inoremap <M-k> <ESC><C-e><C-e><C-e><C-e><C-e>i<Down><Down><Down><Down><Down>
+inoremap <M-i> <ESC><C-y><C-y><C-y><C-y><C-y>i<Up><Up><Up><Up><Up>
+vnoremap <M-k> <Down><Down><Down>
+vnoremap <M-i> <Up><Up><Up>
+
+nnoremap <M-j> <C-Left>
+nnoremap <M-l> <C-Right>
+inoremap <M-j> <C-Left>
+inoremap <M-l> <C-Right>
+vnoremap <M-j> <C-Left>
+vnoremap <M-l> <C-Right>
+
+nnoremap <C-k> <Down>
+nnoremap <C-i> <Up>
+inoremap <C-k> <Down>
+inoremap <C-i> <Up>
+vnoremap <C-k> <Down>
+vnoremap <C-i> <Up>
+
+nnoremap <C-j> <Left>
+nnoremap <C-l> <Right>
+inoremap <C-j> <Left>
+inoremap <C-l> <Right>
+vnoremap <C-j> <Left>
+vnoremap <C-l> <Right>
+
+nnoremap <C-u> <Home>i
+nnoremap <C-o> <End>i
+inoremap <C-u> <Home>
+inoremap <C-o> <End>
+vnoremap <C-u> <Home>
+vnoremap <C-o> <End>
+
+" next, prev tab
+nnoremap <M-o> gt
+nnoremap <M-u> gT
+inoremap <M-o> <ESC>gti
+inoremap <M-u> <ESC>gTi
+
+" Laptop visual mode"
+vnoremap j <Left>
+vnoremap l <Right>
+vnoremap k <Down>
+vnoremap i <Up>
+vnoremap u <Home>
+vnoremap o <End>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 " => Mine 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
@@ -480,10 +599,6 @@ inoremap <C-Up> <ESC><C-y><C-y><C-y><C-y><C-y>i<Up><Up><Up><Up><Up>
 vnoremap <C-Up> kkk
 vnoremap <C-Down> jjj
 
-"comment python code
-"vnoremap <leader>/ :s/^/#/<cr>:noh<cr>
-"vnoremap <leader>. :s/^#//<cr>:noh<cr>
-
 "NerdCommenter
 vmap <leader>/ <leader>c<space>i
 
@@ -491,8 +606,6 @@ vmap <leader>/ <leader>c<space>i
 map fg <C-^>
 
 "multiple indent
-"vnoremap > ><CR>gv
-"vnoremap < <<CR>gv
 vnoremap <Tab> ><CR>gv
 vnoremap <S-Tab> <<CR>gv
 
@@ -505,21 +618,8 @@ nnoremap <PageDown> gt
 map <C-home> gg
 map <C-end> G
 
-" Add folding
-"set fdn=1
-"set fdm=indent
-"set fdi="""
-
 " python simple fold
 let g:SimpylFold_docstring_preview = 1
-"inoremap <F1> <C-O>za
-"nnoremap <F1> za
-"onoremap <F1> <C-C>za
-"vnoremap <F1> zf
-"inoremap <F12> <C-O>za
-"nnoremap <F12> za
-"onoremap <F12> <C-C>za
-"vnoremap <F12> zf
 inoremap <C-e> <C-O>za
 nnoremap <C-e> za
 onoremap <C-e> <C-C>za
@@ -563,15 +663,6 @@ noremap <leader><PageDown> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 " auto detect change
 autocmd CursorHold * checktime
 
-" esc key
-"inoremap <F11> <ESC>
-"nnoremap <F11> <ESC>
-"onoremap <F11> <ESC>
-"vnoremap <F11> <ESC>
-"snoremap <F11> <ESC>
-"xnoremap <F11> <ESC>
-"cnoremap <F11> <ESC>
-
 "Bubble single lines
 noremap <leader><Up> ddkP
 noremap <leader><Down> ddp
@@ -587,9 +678,6 @@ vnoremap p "_dP
 " redo 
 nnoremap r <C-r>
 
-" 
-"inoremap <F9> <C-n>
-
 " control+arrow
 noremap <C-Right> w
 noremap <C-Left> b
@@ -601,36 +689,10 @@ nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>i<Right>
 
 " undo, redo
-nnoremap <C-u> u
-inoremap <C-u> <ESC>ui
-inoremap <C-r> <ESC><C-r>i
-
-"activate visual mode in normal mode
-nnoremap <S-Up> vk
-nnoremap <S-Down> vj
-inoremap <S-Up> <ESC>lvk
-inoremap <S-Down> <ESC>lvj
-" these are mapped in visual mode
-vnoremap <S-Up> k
-vnoremap <S-Down> j
-
-" activate visual mode in normal mode
-nnoremap <S-Left> vh
-nnoremap <S-Right> vl
-inoremap <S-Left> <ESC>vh
-inoremap <S-Right> <ESC>vl
-" these are mapped in visual mode
-vnoremap <S-Left> h
-vnoremap <S-Right> l
-
-"activate visual mode in normal mode  
-nnoremap <S-Home> v<Home>
-nnoremap <S-End> v<End>
-inoremap <S-Home> <ESC>lv<Home>
-inoremap <S-End> <ESC>lv<End>
-" these are mapped in visual mode
-vnoremap <S-Home> <Home>
-vnoremap <S-End> <End>
+nnoremap ZZ u
+nnoremap RR <C-r>
+inoremap ZZ <ESC>ui
+inoremap RR <ESC><C-r>i
 
 " Ctrl+c Ctrl+x Ctrl+v
 vnoremap <C-c> yi
@@ -648,10 +710,6 @@ vmap <C-f> <ESC><space>
 imap <C-h> <ESC>*#
 nmap <C-h> <ESC>*#
 vmap <C-h> <ESC>*# 
-
-"imap <C-n> <ESC>*Ni
-"nmap <C-n> <ESC>*Ni
-"vmap <C-n> <ESC>*Ni 
   
 " go to command mode
 inoremap <F12> <ESC>:
@@ -693,3 +751,7 @@ nnoremap <End> i<End>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let @l="iChromePhp::log('',$);\n^["
 highlight SignColumn ctermbg=0
+
+vnoremap <C-k> <Down>
+vnoremap <C-i> <Up>
+vnoremap <Backspace> <Del>
