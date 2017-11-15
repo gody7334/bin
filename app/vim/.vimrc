@@ -700,10 +700,10 @@ nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>i<Right>
 
 " undo, redo
-nnoremap ZZ u
-nnoremap RR <C-r>
-inoremap ZZ <ESC>ui
-inoremap RR <ESC><C-r>i
+nnoremap <M-z> u
+nnoremap <M-r> <C-r>
+inoremap <M-z> <ESC>ui
+inoremap <M-r> <ESC><C-r>i
 
 " Ctrl+c Ctrl+x Ctrl+v
 vnoremap <C-c> yi
@@ -731,9 +731,13 @@ cnoremap <F12> <ESC>:
 " complete suggestion
 "imap <C-m> <C-n>
 
-" Cut whole line
-inoremap <C-d> <ESC>ddi
-nnoremap <C-d> dd
+" cut whole line
+inoremap <M-d> <ESC>ddi
+nnoremap <M-d> dd 
+
+inoremap <C-d> <Del>
+nnoremap <C-d> <Del>
+vnoremap <C-d> <Del>
 
 " close a tab
 imap <C-q> <ESC><leader>qi
@@ -746,7 +750,7 @@ nmap <C-q> <leader>q
 "nnoremap <F10> :source ./.vim_session<cr>
 
 " let enter and backspace into insert mode
-nnoremap <cr> i<cr>
+nnoremap <cr> i
 nnoremap <Backspace> i<Backspace>
 nnoremap <Del> i<Del>
 nnoremap <Home> i<Home>
