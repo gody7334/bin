@@ -753,6 +753,3 @@ vnoremap <Backspace> <Del>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let @l="iChromePhp::log('',$);\n^["
 highlight SignColumn ctermbg=0
-
-vnoremap <C-k> <Down>
-vnoremap <C-i> <Up>
