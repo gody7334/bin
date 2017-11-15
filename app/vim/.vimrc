@@ -606,8 +606,9 @@ vmap <leader>/ <leader>c<space>i
 map fg <C-^>
 
 "multiple indent
-vnoremap <Tab> ><CR>gv
-vnoremap <S-Tab> <<CR>gv
+"switch between S-tab and Tab as C-i mapping is strange
+vnoremap <S-Tab> ><CR>gv
+vnoremap <Tab> <<CR>gv
 
 "next previous tab
 inoremap <PageUp> <ESC>gTi
@@ -746,6 +747,7 @@ nnoremap <End> i<End>
 " OpenSession
 " DeleteSession
 
+vnoremap <Backspace> <Del>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => String combo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -754,4 +756,3 @@ highlight SignColumn ctermbg=0
 
 vnoremap <C-k> <Down>
 vnoremap <C-i> <Up>
-vnoremap <Backspace> <Del>
