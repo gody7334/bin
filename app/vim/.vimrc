@@ -561,6 +561,13 @@ inoremap <C-o> <End>
 vnoremap <C-u> <Home>
 vnoremap <C-o> <End>
 
+nnoremap <C-u><C-u> <C-Home>i
+nnoremap <C-o><C-o> <C-End>i
+inoremap <C-u><C-u> <C-Home>
+inoremap <C-o><C-o> <C-End>
+vnoremap <C-u><C-u> <C-Home>
+vnoremap <C-o><C-o> <C-End>
+
 " next, prev tab
 nnoremap <M-o> gt
 nnoremap <M-u> gT
