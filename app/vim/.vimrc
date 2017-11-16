@@ -615,8 +615,8 @@ map fg <C-^>
 
 "multiple indent
 "switch between S-tab and Tab as C-i mapping is strange
-inoremap >> <ESC>v><CR>i<Up>
-inoremap << <ESC>v<<CR>i<Up>
+inoremap >> <C-i>
+nnoremap >> i<C-i>
 vnoremap >> ><CR>gv
 vnoremap << <<CR>gv
 
