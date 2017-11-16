@@ -534,12 +534,12 @@ inoremap <M-i> <ESC><C-y><C-y><C-y><C-y><C-y>i<Up><Up><Up><Up><Up>
 vnoremap <M-k> <Down><Down><Down>
 vnoremap <M-i> <Up><Up><Up>
 
-nnoremap <M-j> <C-Left>
-nnoremap <M-l> <C-Right>
-inoremap <M-j> <C-Left>
-inoremap <M-l> <C-Right>
-vnoremap <M-j> <C-Left>
-vnoremap <M-l> <C-Right>
+ nnoremap <M-j> b
+ nnoremap <M-l> w
+ inoremap <M-j> <ESC>bi
+ inoremap <M-l> <ESC>wi
+ vnoremap <M-j> b
+ vnoremap <M-l> w
 
 nnoremap <C-k> <Down>
 nnoremap <C-i> <Up>
@@ -617,7 +617,7 @@ map fg <C-^>
 "switch between S-tab and Tab as C-i mapping is strange
 inoremap >> <ESC>v><CR>i<Up>
 inoremap << <ESC>v<<CR>i<Up>
-vnoremap >> ><CR>gv                                                                                                                                         
+vnoremap >> ><CR>gv
 vnoremap << <<CR>gv
 
 "next previous tab
