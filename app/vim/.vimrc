@@ -529,15 +529,15 @@ vnoremap O <End>
 "Left, Right, Up, Down, Home, End"
 nnoremap <M-k> <C-e><C-e><C-e><C-e><C-e><Down><Down><Down><Down><Down>
 nnoremap <M-i> <C-y><C-y><C-y><C-y><C-y><Up><Up><Up><Up><Up>
-inoremap <M-k> <ESC><C-e><C-e><C-e><C-e><C-e>i<Down><Down><Down><Down><Down>
-inoremap <M-i> <ESC><C-y><C-y><C-y><C-y><C-y>i<Up><Up><Up><Up><Up>
+inoremap <M-k> <ESC><C-e><C-e><C-e><C-e><C-e><Down><Down><Down><Down><Down>
+inoremap <M-i> <ESC><C-y><C-y><C-y><C-y><C-y><Up><Up><Up><Up><Up>
 vnoremap <M-k> <Down><Down><Down>
 vnoremap <M-i> <Up><Up><Up>
 
  nnoremap <M-j> b
  nnoremap <M-l> w
- inoremap <M-j> <ESC>bi
- inoremap <M-l> <ESC>wi
+ inoremap <M-j> <ESC><Right>bi
+ inoremap <M-l> <ESC><Right>wi
  vnoremap <M-j> b
  vnoremap <M-l> w
 
