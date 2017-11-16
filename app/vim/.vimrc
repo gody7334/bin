@@ -763,10 +763,10 @@ nnoremap <End> i<End>
 
 vnoremap <Backspace> <Del>
 
-map i <Up>
-map k <Down>
-map j <Left>
-map l <Right>
+noremap i <Up>
+noremap k <Down>
+noremap j <Left>
+noremap l <Right>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => String combo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
