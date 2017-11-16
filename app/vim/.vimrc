@@ -555,15 +555,15 @@ inoremap <C-l> <Right>
 vnoremap <C-j> <Left>
 vnoremap <C-l> <Right>
 
-nnoremap <C-u> <Home>i
-nnoremap <C-o> <End>i
+nnoremap <C-u> i<Home>
+nnoremap <C-o> i<End>
 inoremap <C-u> <Home>
 inoremap <C-o> <End>
 vnoremap <C-u> <Home>
 vnoremap <C-o> <End>
 
-nnoremap <C-u><C-u> <C-Home>i
-nnoremap <C-o><C-o> <C-End>i
+nnoremap <C-u><C-u> i<C-Home>
+nnoremap <C-o><C-o> i<C-End>
 inoremap <C-u><C-u> <C-Home>
 inoremap <C-o><C-o> <C-End>
 vnoremap <C-u><C-u> <C-Home>
@@ -735,9 +735,9 @@ cnoremap <F12> <ESC>:
 inoremap <M-d> <ESC>ddi
 nnoremap <M-d> dd 
 
-inoremap <C-d> <Del>
-nnoremap <C-d> <Del>
-vnoremap <C-d> <Del>
+imap <C-d> <Del>
+nmap <C-d> <Del>
+vmap <C-d> <Del>
 
 " close a tab
 imap <C-q> <ESC><leader>qi
