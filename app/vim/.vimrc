@@ -707,8 +707,8 @@ nnoremap <C-r> <C-r>i
 cnoremap <C-z> suspend<cr>
 
 " Ctrl+c Ctrl+x Ctrl+v
-vnoremap <C-c> yi
-vnoremap <C-x> di
+vnoremap <C-c> y
+vnoremap <C-x> d
 nnoremap <C-v> pi<Right>
 inoremap <C-v> <ESC>pi<Right>
 vmap <C-v> <Del><Left><C-v>
