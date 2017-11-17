@@ -734,8 +734,8 @@ cnoremap <F12> <ESC>:
 "imap <C-m> <C-n>
 
 " cut whole line
-inoremap <C-d><C-d> <ESC>ddi
-nnoremap <C-d><C-d> dd 
+inoremap <C-d><C-d> <ESC>"_ddi
+nnoremap <C-d><C-d> "_dd 
 
 imap <C-d> <Del>
 nmap <C-d> <Del>
