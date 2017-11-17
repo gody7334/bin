@@ -700,10 +700,12 @@ nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>i<Right>
 
 " undo, redo
-nnoremap <M-z> u
-nnoremap <M-r> <C-r>
-inoremap <M-z> <ESC>ui
-inoremap <M-r> <ESC><C-r>i
+"nnoremap <M-z> u
+"nnoremap <M-r> <C-r>
+"inoremap <M-z> <ESC>ui
+"inoremap <M-r> <ESC><C-r>i
+inoremap <C-z> <ESC>ui
+inoremap <C-r> <ESC><C-r>i
 
 " Ctrl+c Ctrl+x Ctrl+v
 vnoremap <C-c> yi
@@ -732,8 +734,8 @@ cnoremap <F12> <ESC>:
 "imap <C-m> <C-n>
 
 " cut whole line
-inoremap <M-d> <ESC>ddi
-nnoremap <M-d> dd 
+inoremap <C-d><C-d> <ESC>ddi
+nnoremap <C-d><C-d> dd 
 
 imap <C-d> <Del>
 nmap <C-d> <Del>
