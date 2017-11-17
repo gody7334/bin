@@ -700,12 +700,11 @@ nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>i<Right>
 
 " undo, redo
-"nnoremap <M-z> u
-"nnoremap <M-r> <C-r>
-"inoremap <M-z> <ESC>ui
-"inoremap <M-r> <ESC><C-r>i
 inoremap <C-z> <ESC>ui
 inoremap <C-r> <ESC><C-r>i
+nnoremap <C-z> ui
+nnoremap <C-r> <C-r>i
+cnoremap <C-z> suspend<cr>
 
 " Ctrl+c Ctrl+x Ctrl+v
 vnoremap <C-c> yi
