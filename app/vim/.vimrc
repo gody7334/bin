@@ -769,6 +769,11 @@ noremap i <Up>
 noremap k <Down>
 noremap j <Left>
 noremap l <Right>
+
+nnoremap <M-z> <Esc>
+inoremap <M-z> <Esc>
+vnoremap <M-z> <Esc>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => String combo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
