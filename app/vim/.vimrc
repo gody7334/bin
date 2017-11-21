@@ -635,6 +635,10 @@ inoremap <C-e> <C-O>za
 nnoremap <C-e> za
 onoremap <C-e> <C-C>za
 vnoremap <C-e> zf
+inoremap <M-e> <C-O>za
+nnoremap <M-e> za
+onoremap <M-e> <C-C>za
+vnoremap <M-e> zf
 
 "enable mouse event
 set mouse=a
