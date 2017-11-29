@@ -757,7 +757,7 @@ nmap <C-q> <leader>q
 " let enter and backspace into insert mode
 nnoremap <cr> i
 nnoremap <Backspace> i<Backspace>
-nnoremap <Del> i<Del>
+nnoremap <Del> <Del>i
 nnoremap <Home> i<Home>
 nnoremap <End> i<End>
 
@@ -766,7 +766,7 @@ nnoremap <End> i<End>
 " OpenSession
 " DeleteSession
 
-vnoremap <Backspace> <Del>
+vnoremap <Backspace> "_d
 
 noremap i <Up>
 noremap k <Down>
